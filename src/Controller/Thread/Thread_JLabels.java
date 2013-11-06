@@ -4,7 +4,7 @@
 	==========
 	
 	Splinter - The RAT (Remote Administrator Tool)
-	Developed By Solomon Sonya and Nick Kulesza
+	Developed By Solomon Sonya, Nick Kulesza, and Dan Gunter
 	Copyright 2013 Solomon Sonya
 
 	This program is free software: you are free to  redistribute 

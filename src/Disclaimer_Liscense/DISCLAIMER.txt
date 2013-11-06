@@ -4,7 +4,7 @@
 
 Splinter RAT is developed as a tool to help gain better awareness for network security.  By using this program, you acknowledge you will not use it for harmful, illegal, or any other unwarranted purposes unless you are have permission by all parties involved. 
 
-Solomon Sonya, Nick Kulesza and other developers on this project are not responsible for the use/misuse or any damages that may arise from the use of any program attached to this project. 
+Solomon Sonya, Nick Kulesza, Dan Gunter and other developers on this project are not responsible for the use/misuse or any damages that may arise from the use of any program attached to this project. 
 
 Use at your own risk, but definitely enjoy the experience!
 
@@ -20,6 +20,6 @@ Please feel free to contact us, direct message us, or to leave any feedback conc
 
 Thanks for your interest!!!!!!!!
 
-On behalf of Solomon, Nick, and the Splinter development team, we wish you happy hunting!
+On behalf of Solomon, Nick, Dan, and the Splinter development team, we wish you happy hunting!
 
-Contact: @splinter_therat, @carpenter1010, @MedivhMagus
+Contact: @splinter_therat, @carpenter1010, @MedivhMagus, @LRCLabs
