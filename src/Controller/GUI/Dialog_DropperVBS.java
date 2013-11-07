@@ -6,6 +6,8 @@
 	Splinter - The RAT (Remote Administrator Tool)
 	Developed By Solomon Sonya, Nick Kulesza, and Dan Gunter
 	Copyright 2013 Solomon Sonya
+	
+	This copyright applies to the entire Splinter Project and all relating source code
 
 	This program is free software: you are free to  redistribute 
     it under the terms of the GNU General Public License as published by
@@ -47,6 +49,8 @@
 **/
 
 
+
+
 package Controller.GUI;
 
 import Controller.Drivers.Drivers;
@@ -69,6 +73,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.*;
+import java.awt.*;
 
 public class Dialog_DropperVBS extends JDialog
   implements ActionListener

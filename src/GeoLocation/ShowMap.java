@@ -6,6 +6,8 @@
 	Splinter - The RAT (Remote Administrator Tool)
 	Developed By Solomon Sonya, Nick Kulesza, and Dan Gunter
 	Copyright 2013 Solomon Sonya
+	
+	This copyright applies to the entire Splinter Project and all relating source code
 
 	This program is free software: you are free to  redistribute 
     it under the terms of the GNU General Public License as published by
@@ -47,6 +49,8 @@
 **/
 
 
+
+
 package GeoLocation;
 
 import Controller.Drivers.Drivers;
@@ -67,7 +71,7 @@ public class ShowMap extends Thread
   {
     try
     {
-      process = Runtime.getRuntime().exec("cmd /c start http://maps.google.com/maps?q=" + this.threadToShow.myGEO_Latitude + "," + this.threadToShow.myGEO_Longitude);
+    	Process process = Runtime.getRuntime().exec("cmd /c start http://maps.google.com/maps?q=" + this.threadToShow.myGEO_Latitude + "," + this.threadToShow.myGEO_Longitude);
     }
     catch (Exception e)
     {

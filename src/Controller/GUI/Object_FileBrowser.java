@@ -6,6 +6,8 @@
 	Splinter - The RAT (Remote Administrator Tool)
 	Developed By Solomon Sonya, Nick Kulesza, and Dan Gunter
 	Copyright 2013 Solomon Sonya
+	
+	This copyright applies to the entire Splinter Project and all relating source code
 
 	This program is free software: you are free to  redistribute 
     it under the terms of the GNU General Public License as published by
@@ -45,6 +47,8 @@
 	Email	--> splinterbotnet@gmail.com
 	GitHub	--> https://github.com/splinterbotnet
 **/
+
+
 
 
 package Controller.GUI;
@@ -403,7 +407,7 @@ public class Object_FileBrowser
     this.vctMyJTableData.add(this.myFile_Size);
     this.vctMyJTableData.add(this.myPermissions);
     this.vctMyJTableData.add(this.myFile_dateLastModified_long);
-    this.vctMyJTableData.add(this.myIndexInArrayList);
+    this.vctMyJTableData.add(""+this.myIndexInArrayList);
 
     return this.vctMyJTableData;
   }

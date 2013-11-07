@@ -6,6 +6,8 @@
 	Splinter - The RAT (Remote Administrator Tool)
 	Developed By Solomon Sonya, Nick Kulesza, and Dan Gunter
 	Copyright 2013 Solomon Sonya
+	
+	This copyright applies to the entire Splinter Project and all relating source code
 
 	This program is free software: you are free to  redistribute 
     it under the terms of the GNU General Public License as published by
@@ -45,6 +47,8 @@
 	Email	--> splinterbotnet@gmail.com
 	GitHub	--> https://github.com/splinterbotnet
 **/
+
+
 
 
 package Implant.FTP;
@@ -128,7 +132,7 @@ public class FTP_Thread_Receiver extends Thread
     {
       Drivers.sop("Connection Established to receive this FTP File on: " + this.sktConnection.getInetAddress() + " : " + this.sktConnection.getPort());
 
-      this.strIPAddress = this.sktConnection.getInetAddress();
+      this.strIPAddress = ""+this.sktConnection.getInetAddress();
       this.hostPort = this.sktConnection.getLocalPort();
       if (this.hostPort < 0) {
         this.hostPort = 80;

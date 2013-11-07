@@ -6,6 +6,8 @@
 	Splinter - The RAT (Remote Administrator Tool)
 	Developed By Solomon Sonya, Nick Kulesza, and Dan Gunter
 	Copyright 2013 Solomon Sonya
+	
+	This copyright applies to the entire Splinter Project and all relating source code
 
 	This program is free software: you are free to  redistribute 
     it under the terms of the GNU General Public License as published by
@@ -47,6 +49,7 @@
 **/
 
 
+
 package RunningProcess;
 
 import java.util.Vector;
@@ -73,7 +76,7 @@ public class Node_RunningProcess
   {
     this.myImageName = ImageName;
     this.PID = procID;
-    this.myPID = this.PID;
+    this.myPID = ""+this.PID;
     this.mySessionName = SessionName;
     this.mySessionNumber = SessionNumer;
     this.myMemUsage = MemUsage;
@@ -90,7 +93,7 @@ public class Node_RunningProcess
     } catch (Exception localException) {
     }
     this.vctMyRowData.add(this.myImageName);
-    this.vctMyRowData.add(this.PID);
+    this.vctMyRowData.add(""+this.PID);
     this.vctMyRowData.add(this.mySessionName);
     this.vctMyRowData.add(this.mySessionNumber);
     this.vctMyRowData.add(this.myMemUsage);
